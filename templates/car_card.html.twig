@@ -1,0 +1,22 @@
+{% extends "home.html.twig" %}
+
+{% block content %}
+<div id="carCard">
+	<img src="{{carTest.carImage}}" alt="" id="carImage">
+	<h3 id="carName">{{carTest.carName}}</h3>
+	<h4 id="carStatsText">Stats:
+	</h4>
+	<div id="carStatsArray">
+		<div id="carStatsLeft">
+			<span class="carStat">Acceleration: {{carTest.carStats[0]}}</span>
+			<span class="carStat">Control: {{carTest.carStats[1]}}</span>
+			<span class="carStat">Off-road: {{carTest.carStats[2]}}</span>
+		</div>
+		<div id="carStatsRight">
+			<span class="carStat">Top speed: {{carTest.carStats[3]}}</span>
+			<span class="carStat">Weight: {{carTest.carStats[4]}}</span>
+			<span class="carStat">Toughness: {{carTest.carStats[5]}}</span>
+		</div>
+	</div>
+</div>
+{% endblock %}

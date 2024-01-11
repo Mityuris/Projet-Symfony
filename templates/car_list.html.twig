@@ -1,0 +1,36 @@
+{% extends "home.html.twig" %}
+
+{% block content %}
+	<div id="carList">
+		<h1>Car list</h1>
+		<div>
+			{{form(form)}}
+			{% for car in carList %}
+				<div id="carCard">
+					<img src="{{asset('Images/'~ car.carName ~ '.png')}}" alt="" id="carImage">
+					<h3 id="carName">{{car.carName}}</h3>
+					<h4 id="carStatsText">Stats:
+					</h4>
+					<div id="carStatsArray">
+						<div id="carStatsLeft">
+							<span class="carStat">Acceleration:
+								{{car.carStats[0]}}</span>
+							<span class="carStat">Control:
+								{{car.carStats[1]}}</span>
+							<span class="carStat">Off-road:
+								{{car.carStats[2]}}</span>
+						</div>
+						<div id="carStatsRight">
+							<span class="carStat">Top speed:
+								{{car.carStats[3]}}</span>
+							<span class="carStat">Weight:
+								{{car.carStats[4]}}</span>
+							<span class="carStat">Toughness:
+								{{car.carStats[5]}}</span>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

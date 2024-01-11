@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}:3
+			{% endblock %}
+		</title>
+		<link rel="stylesheet" href="{{asset('Images/bird.jpeg')}}">
+		{% block stylesheets %}
+			<link href="{{ asset('css/main.css') }}" rel="stylesheet"/>
+		{% endblock %}
+
+		{% block javascripts %}{% endblock %}
+	</head>
+	<header>
+		<img src="{{asset('Images/logo.jpg')}}" alt="">
+		<a>Home</a>
+		<a>Cars</a>
+		<a>Map</a>
+		<a>Login</a>
+	</header>
+	<body>
+		{% block content %}{% endblock %}
+	</body>
+</html>
