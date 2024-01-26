@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+	{# {{form(form, {'enctype':'multipart/form-data'})}} #}
+	<div>
+		<form method="post" action="{{path('car-upload')}}" enctype='multipart/form-data'>
+			<label for="CarName">Car Name</label><br>
+			<input type="text" name="CarName" id="CarName" placeholder="car name"><br>
+			<label for="stats">Stats</label><br>
+			<div name="stats">
+				<label for="stats1">Acceleration</label><br>
+				<input type="range" name="acceleration" id="acceleration" min="0" max="10" step="0.1" oninput="this.nextElementSibling.value = this.value">
+				<output>5.0</output><br>
+				<label for="stats2">Top Speed</label><br>
+				<input type="range" name="top-speed" id="top-speed" min="0" max="10" step="0.1" oninput="this.nextElementSibling.value = this.value">
+				<output>5.0</output><br>
+				<label for="stats3">Control</label><br>
+				<input type="range" name="control" id="control" min="0" max="10" step="0.1" oninput="this.nextElementSibling.value = this.value">
+				<output>5.0</output><br>
+				<label for="stats4">Weight</label><br>
+				<input type="range" name="weight" id="weight" min="0" max="10" step="0.1" oninput="this.nextElementSibling.value = this.value">
+				<output>5.0</output><br>
+				<label for="stats5">Off-Road</label><br>
+				<input type="range" name="off-road" id="off-road" min="0" max="10" step="0.1" oninput="this.nextElementSibling.value = this.value">
+				<output>5.0</output><br>
+				<label for="stats6">Toughness</label><br>
+				<input type="range" name="toughness" id="toughness" min="0" max="10" step="0.1" oninput="this.nextElementSibling.value = this.value">
+				<output>5.0</output><br>
+			</div>
+			<label for="car-image">Car Image</label><br>
+			<input type="file" id="car-image" name="car-image" accept=".png,.jpg,.jpeg">
+			<input type="submit" name="LoginSend" id="LoginSend">
+		</form>
+	</div>
+{% endblock %}

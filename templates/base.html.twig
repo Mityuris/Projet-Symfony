@@ -17,8 +17,13 @@
 		<img src="{{asset('Images/logo.jpg')}}" alt="">
 		<a href="home">Home</a>
 		<a href="car-list">Cars</a>
-		<a href="Map">Map</a>
-		<a href="Login">Login</a>
+		<a href="map">Map</a>
+		{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+			<a href="logout">Disconnect</a>
+		{% else %}
+		<a href="login">Login</a>
+		<a href="register">Register</a>
+		{% endif %}
 	</header>
 	<body>
 		{% block content %}{% endblock %}
