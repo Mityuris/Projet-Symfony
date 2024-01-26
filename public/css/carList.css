@@ -1,0 +1,40 @@
+body {
+    background-color: skyblue;
+}
+
+#carList{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#carItems{
+    display: flex;
+    flex-direction: row;
+    width: 80vw;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.carCard{
+    text-decoration: none;
+    color: black;
+}
+
+.carCardDiv{
+    padding: 25px;
+    width: min-content;
+    margin: 25px;
+    border: 2px solid;
+    border-color: black;
+}
+
+.carImage{
+    max-width: 250px;
+}
+
+.pages{
+    margin-bottom: 50px;
+}

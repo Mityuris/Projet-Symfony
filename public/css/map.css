@@ -1,0 +1,54 @@
+body {
+    background-color: skyblue;
+}
+
+.mapBody {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.legend {
+    display: flex;
+}
+
+.legendItem{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#mapImage {
+    width: 90vw;
+}
+
+#markerContainer {
+    width: min-content;
+    position: relative;
+}
+
+.marker {
+    text-decoration: none;
+    position: absolute;
+    width: min-content;
+}
+
+.markerCam {
+    color: lightseagreen;
+}
+
+.markerGate {
+    color: grey;
+}
+
+.markerCar {
+    color: purple;
+}
+
+.markerBillboard {
+    color: orange;
+}
+
+.markerWarp {
+    color: green;
+}

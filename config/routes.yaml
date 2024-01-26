@@ -3,3 +3,9 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+home_route:
+    path: '/{any}'
+    controller: App\Controller\homeController::renderHome
+    requirements:
+        any: '.+'

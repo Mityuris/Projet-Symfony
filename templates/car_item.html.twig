@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link href="{{ asset('css/main.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+	<div id="carCard" class="carCardDiv">
+		<img src="{{asset('Uploads/' ~ car[0].carImage)}}" alt="" id="carImage" style="width: 250px;">
+		<h3 id="carName">{{car[0].carName}}</h3>
+		<h4 id="carStatsText">Stats:</h4>
+		<div id="carStatsArray">
+			<div id="carStatsLeft">
+				<span class="carStat">Acceleration:
+					{{car[0].carStats[0]}}</span>
+				<span class="carStat">Control:
+					{{car[0].carStats[1]}}</span>
+				<span class="carStat">Off-road:
+					{{car[0].carStats[2]}}</span>
+			</div>
+			<div id="carStatsRight">
+				<span class="carStat">Top speed:
+					{{car[0].carStats[3]}}</span>
+				<span class="carStat">Weight:
+					{{car[0].carStats[4]}}</span>
+				<span class="carStat">Toughness:
+					{{car[0].carStats[5]}}</span>
+			</div>
+		</div>
+	</div>
+{% endblock %}

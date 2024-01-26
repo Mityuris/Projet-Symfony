@@ -1,45 +1,51 @@
 {% extends "base.html.twig" %}
+{% block stylesheets %}
+	<link href="{{ asset('css/carList.css') }}" rel="stylesheet"/>
+{% endblock %}
 
 {% block content %}
 	<div id="carList">
 		<h1>Car list</h1>
-		<div>
-			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-				<a href="car-creation">Add a car</a>
-			{% endif %}
+		{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+			<a href="car-creation">Add a car</a>
+		{% endif %}
+		<div id="carItems">
 			{% if carList is not iterable %}
 				<h4>{{carList}}</h4>
 			{% else %}
 				{% for car in carList %}
-					<div id="carCard">
-						<img src="{{asset('Images/' ~ car.carName ~ '.png')}}" alt="" id="carImage" style="width: 250px;">
-						<h3 id="carName">{{car.carName}}</h3>
-						<h4 id="carStatsText">Stats:
-						</h4>
-						<div id="carStatsArray">
-							<div id="carStatsLeft">
-								<span class="carStat">Acceleration:
-									{{car.carStats[0]}}</span>
-								<span class="carStat">Control:
-									{{car.carStats[1]}}</span>
-								<span class="carStat">Off-road:
-									{{car.carStats[2]}}</span>
-							</div>
-							<div id="carStatsRight">
-								<span class="carStat">Top speed:
-									{{car.carStats[3]}}</span>
-								<span class="carStat">Weight:
-									{{car.carStats[4]}}</span>
-								<span class="carStat">Toughness:
-									{{car.carStats[5]}}</span>
+					<a href="car/{{car.carName}}" class="carCard">
+						<div id="carCard" class="carCardDiv">
+							<img src="{{asset('Uploads/' ~ car.carImage)}}" alt="" class="carImage" style="width: 250px;">
+							<h3 id="carName">{{car.carName}}</h3>
+							<h4 id="carStatsText">Stats:</h4>
+							<div id="carStatsArray">
+								<div id="carStatsLeft">
+									<span class="carStat">Acceleration:
+										{{car.carStats[0]}}</span>
+									<span class="carStat">Control:
+										{{car.carStats[1]}}</span>
+									<span class="carStat">Off-road:
+										{{car.carStats[2]}}</span>
+								</div>
+								<div id="carStatsRight">
+									<span class="carStat">Top speed:
+										{{car.carStats[3]}}</span>
+									<span class="carStat">Weight:
+										{{car.carStats[4]}}</span>
+									<span class="carStat">Toughness:
+										{{car.carStats[5]}}</span>
+								</div>
 							</div>
 						</div>
-					</div>
-				{% endfor %}
-				{% for pageNumber in 1..(numberOfCars//10)+1 %}
-					<a href="car-list?pageNumber={{pageNumber}}">{{pageNumber}}</a>
+					</a>
 				{% endfor %}
 			{% endif %}
+		</div>
+		<div class="pages">
+			{% for pageNumber in 1..numberOfPages %}
+				<a href="car-list?pageNumber={{pageNumber}}">{{pageNumber}}</a>
+			{% endfor %}
 		</div>
 	</div>
 {% endblock %}

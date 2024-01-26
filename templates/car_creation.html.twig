@@ -1,7 +1,9 @@
 {% extends "base.html.twig" %}
+{% block stylesheets %}
+	<link href="{{ asset('css/map.css') }}" rel="stylesheet"/>
+{% endblock %}
 
 {% block content %}
-	{# {{form(form, {'enctype':'multipart/form-data'})}} #}
 	<div>
 		<form method="post" action="{{path('car-upload')}}" enctype='multipart/form-data'>
 			<label for="CarName">Car Name</label><br>
@@ -28,7 +30,7 @@
 				<output>5.0</output><br>
 			</div>
 			<label for="car-image">Car Image</label><br>
-			<input type="file" id="car-image" name="car-image" accept=".png,.jpg,.jpeg">
+			<input type="file" id="car-image" name="car-image" accept=".png,.jpg,.jpeg"><br>
 			<input type="submit" name="LoginSend" id="LoginSend">
 		</form>
 	</div>

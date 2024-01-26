@@ -1,18 +1,35 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link href="{{ asset('css/map.css') }}" rel="stylesheet"/>
+{% endblock %}
 
 {% block content %}
-    <div>
-	    <img src="{{asset('Images/map.png')}}" alt="" id="carImage" style="width: 90vw">
-        <div>
-            <h4>Markers</h4>
-            <ul>
-            <li>Jackspots</li>
-            <li>Races</li>
-            <li>Billboards</li>
-            <li>Security Gates</li>
-            <li>Radars</li>
-            <li></li>
-            </ul>
-        </div>
-    </div>
-{% endblock %}
+	<div class="mapBody">
+			<div>
+				<h4>Markers</h4>
+				<ul class="legend">
+					<li class="markerCar legendItem">Jackspots</li>
+					<li class="markerBillboard legendItem">Billboards</li>
+					<li class="markerGate legendItem">Security Gates</li>
+					<li class="markerCam legendItem">Radars</li>
+					<li class="markerWarp legendItem">Warp Pipes</li>
+    				</ul>
+			</div>
+		<div id="markerContainer">
+			<img src="{{asset('Images/map.png')}}" alt="" id="mapImage">
+			{% for marker in allMarkers %}
+				{% if marker.markerType=="Speed Camera" %}
+					<a href="" class="marker markerCam" style="top:{{ ((marker.mapCoordinates['0'])|number_format(20)*(-150)+155) ~ "%"}}; left:{{ (marker.mapcoordinates['1']|number_format(20)*115+130) ~ "%"}}">C</a>
+				{% elseif marker.markerType=="Security Gate" %}
+					<a href="" class="marker markerGate" style="top:{{ ((marker.mapCoordinates['0'])|number_format(20)*(-150)+155) ~ "%"}}; left:{{ (marker.mapcoordinates['1']|number_format(20)*115+130) ~ "%"}}">G</a>
+				{% elseif marker.markerType=="Billboard" %}
+					<a href="" class="marker markerBillboard" style="top:{{ ((marker.mapCoordinates['0'])|number_format(20)*(-150)+155) ~ "%"}}; left:{{ (marker.mapcoordinates['1']|number_format(20)*115+130) ~ "%"}}">B</a>
+				{% elseif marker.markerType=="Warp Pipe" %}
+					<a href="" class="marker markerWarp" style="top:{{ ((marker.mapCoordinates['0'])|number_format(20)*(-150)+155) ~ "%"}}; left:{{ (marker.mapcoordinates['1']|number_format(20)*115+130) ~ "%"}}">W</a>
+				{% else %}
+					<a href="" class="marker markerCar" style="top:{{ ((marker.mapCoordinates['0'])|number_format(20)*(-150)+155) ~ "%"}}; left:{{ (marker.mapcoordinates['1']|number_format(20)*115+130) ~ "%"}}">J</a>
+				{% endif %}
+			{% endfor %}
+			</div>
+		</div>
+	{% endblock %}

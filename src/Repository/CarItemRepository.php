@@ -21,44 +21,56 @@ class CarItemRepository extends ServiceEntityRepository
         parent::__construct($registry, CarItem::class);
     }
 
-    public function getAllCars($pageNumber, $numeberOfItemsInPage) {
+    public function getAllCars($pageNumber, $numeberOfItemsInPage)
+    {
         return $this->createQueryBuilder('c')
             ->setMaxResults($numeberOfItemsInPage)
-            ->setFirstResult(($pageNumber-1)*10)
+            ->setFirstResult(($pageNumber - 1) * 10)
             ->getQuery()
-            ->getResult()
-            ;
+            ->getResult();
     }
 
-    public function getNumberOfCars(){
-        return sizeof($this->createQueryBuilder('c')
-        ->getQuery()
-        ->getResult()
-    );
+    public function getNumberOfCars()
+    {
+        return sizeof(
+            $this->createQueryBuilder('c')
+                ->getQuery()
+                ->getResult()
+        );
     }
 
-//    /**
-//     * @return CarItem[] Returns an array of CarItem objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function getOneOfCars($carName)
+    {
+        return
+            $this->createQueryBuilder('c')
+            ->where('c.carName = :carName')
+            ->setParameter('carName', $carName)
+            ->getQuery()
+            ->getResult();
+    }
 
-//    public function findOneBySomeField($value): ?CarItem
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    //    /**
+    //     * @return CarItem[] Returns an array of CarItem objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('c')
+    //            ->andWhere('c.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('c.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
+
+    //    public function findOneBySomeField($value): ?CarItem
+    //    {
+    //        return $this->createQueryBuilder('c')
+    //            ->andWhere('c.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }
